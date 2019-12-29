@@ -10,21 +10,17 @@ class Example(QWidget):
         super().__init__()
         uic.loadUi('UI.ui', self)
         self.pushButton.clicked.connect(self.run)
-        self.n = 0
 
     def run(self):
-        self.x, self.y, self.h = (random.randint(0, 250), random.randint(0, 250),
-                                  random.randint(0, 50))
-        self.n = 1
         self.update()
 
     def paintEvent(self, event):
-        if self.n != 0:
-            qp = QPainter()
-            qp.begin(self)
-            qp.setBrush(QColor(225, 225, 0))
-            qp.drawEllipse(self.x, self.y, self.h, self.h)
-            qp.end()
+        d = random.randint(0, 50)
+        qp = QPainter()
+        qp.begin(self)
+        qp.setBrush(QColor(225, 225, 0))
+        qp.drawEllipse(random.randint(0, 400), random.randint(0, 400), d, d)
+        qp.end()
 
 
 if __name__ == '__main__':
